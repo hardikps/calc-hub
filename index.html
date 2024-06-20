@@ -10,12 +10,30 @@
     
     <link rel="stylesheet" href="styles.css">
     
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            if (!localStorage.getItem('visits')) {
+                localStorage.setItem('visits', 0); 
+            }
+
+            
+            let visits = parseInt(localStorage.getItem('visits'));
+            visits++;
+            localStorage.setItem('visits', visits);
+
+            
+            document.getElementById('visitorCount').textContent = visits;
+        });
+    </script>
 
 </head>
 <body>
     <div class="container">
         
         <h1 class="text-center mb-4">Calculator Hub</h1>
+        <h1 class="text-center mb-4">Calculator Hub</h1>
+        <p>Total Visitors: <span id="visitorCount">Loading...</span></p>
         <div class="nav-buttons text-center mb-4">
             <button type="button" class="btn btn-primary mr-2" onclick="showCalculator('noticePeriod')">Notice Period Calculator</button>
             <button type="button" class="btn btn-primary" onclick="showCalculator('increment')">Increment Calculator</button>

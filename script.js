@@ -120,3 +120,17 @@ function toggleMode() {
 
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if 'visits' key exists in localStorage
+    if (!localStorage.getItem('visits')) {
+        localStorage.setItem('visits', 0); // Initialize visits to 0 if not set
+    }
+
+    // Increment visit count
+    let visits = parseInt(localStorage.getItem('visits'));
+    visits++;
+    localStorage.setItem('visits', visits);
+
+    // Display the visitor count
+    document.getElementById('visitorCount').textContent = visits;
+});
