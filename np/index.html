@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notice Period Calculator</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    .calculator {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e9ecef;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .additional-message {
+      display: none;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div id="noticePeriod" class="calculator">
+      <h2 class="text-center mb-4">Notice Period Calculator</h2>
+      <form id="noticePeriodForm">
+        <div class="form-group">
+          <label for="startDate">Start Date:</label>
+          <input type="date" id="startDate" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="noticeDays">Notice Period (days):</label>
+          <input type="number" id="noticeDays" class="form-control" required>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="calculateEndDate()">Calculate</button>
+      </form>
+      <div class="result mt-4" id="noticeResult"></div>
+      <div class="additional-message alert alert-warning" role="alert" id="additionalMessage"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script>
+    function calculateEndDate() {
+      const startDate = new Date(document.getElementById('startDate').value);
+      const noticeDays = parseInt(document.getElementById('noticeDays').value);
+      
+      if (isNaN(startDate.getTime()) || isNaN(noticeDays) || noticeDays <= 0) {
+        document.getElementById('noticeResult').innerHTML = '<div class="alert alert-danger" role="alert">Please enter a valid start date and notice period.</div>';
+        document.getElementById('additionalMessage').style.display = 'none';
+        return;
+      }
+
+      const endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + noticeDays);
+      
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('noticeResult').innerHTML = `<div class="alert alert-success" role="alert">The end date is ${endDate.toLocaleDateString(undefined, options)}.</div>`;
+
+      // Determine the appropriate message based on notice days
+      let message = '';
+      if (noticeDays <= 30) {
+        message = 'Make hai bhai tere.';
+      } else if (noticeDays > 30 && noticeDays <= 60) {
+        message = 'Try hard to negotiate & get early release, azadi ab due nhi hai.';
+      } else if (noticeDays > 60 && noticeDays <= 90) {
+        message = 'Kuch nhi ho sakta tera offer to due ki baat hai, tujhe to calls bhi hardly aayenge.';
+      }
+
+      document.getElementById('additionalMessage').innerHTML = `<marquee behavior="scroll" direction="left" class="alert alert-info">${message}</marquee>`;
+      document.getElementById('additionalMessage').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
