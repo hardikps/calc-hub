@@ -19,7 +19,7 @@ function calculateEndDate() {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('noticeResult').textContent = `The Last Working Day is ${endDate.toLocaleDateString(undefined, options)}.`;
 
-    // Determine the appropriate message based on notice days
+    
     let message = '';
     if (noticeDays <= 30) {
         message = 'Maje hai bhai tumhare to.';
@@ -85,10 +85,10 @@ function calculateIncrement() {
     const incrementAmount = newSalary - currentSalary;
     document.getElementById('incrementResult').textContent = `The new salary is ${newSalary.toFixed(2)}, which is an increase of ${incrementAmount.toFixed(2)}.`;
 
-    // Determine the percentage increase
+    
     const percentageIncrease = (incrementAmount / currentSalary) * 100;
 
-    // Display message based on percentage increase
+    
     let message = '';
     if (percentageIncrease < 10) {
         message = 'Switch kar de job kuch nhi rakha yaha!';
@@ -119,4 +119,4 @@ function toggleMode() {
 }
 
 
-// Clear cache on page reload
+
