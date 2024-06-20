@@ -77,15 +77,18 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Fetch visitor count from server-side PHP script
-            fetch('counter.php')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('visitorCount').textContent = data;
-                })
-                .catch(error => {
-                    console.error('Error fetching visitor count:', error);
-                });
+            // Check if 'visits' key exists in localStorage
+            if (!localStorage.getItem('visits')) {
+                localStorage.setItem('visits', 0); // Initialize visits to 0 if not set
+            }
+
+            // Increment visit count
+            let visits = parseInt(localStorage.getItem('visits'));
+            visits++;
+            localStorage.setItem('visits', visits);
+
+            // Display the visitor count
+            document.getElementById('visitorCount').textContent = visits;
         });
     </script>
 
