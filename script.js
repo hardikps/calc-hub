@@ -102,35 +102,3 @@ function calculateIncrement() {
     document.getElementById('additionalMessage2').style.display = 'block';
     document.getElementById('additionalMessage2').style.display = 'block';
 }
-
-
-function toggleMode() {
-    const container = document.querySelector('.container');
-    const modeToggle = document.getElementById('modeToggle');
-    const modeLabel = document.getElementById('modeLabel');
-
-    if (modeToggle.checked) {
-        container.classList.add('dark-mode');
-        modeLabel.textContent = 'Dark Mode';
-    } else {
-        container.classList.remove('dark-mode');
-        modeLabel.textContent = 'Light Mode';
-    }
-}
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Check if 'visits' key exists in localStorage
-    if (!localStorage.getItem('visits')) {
-        localStorage.setItem('visits', 0); // Initialize visits to 0 if not set
-    }
-
-    // Increment visit count
-    let visits = parseInt(localStorage.getItem('visits'));
-    visits++;
-    localStorage.setItem('visits', visits);
-
-    // Display the visitor count
-    document.getElementById('visitorCount').textContent = visits;
-});
