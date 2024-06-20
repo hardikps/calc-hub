@@ -24,9 +24,9 @@ function calculateEndDate() {
     if (noticeDays <= 30) {
         message = 'Maje hai bhai tumhare to.';
     } else if (noticeDays > 30 && noticeDays <= 60) {
-        message = 'Try hard to negotiate & get early release ASAP, azadi ab due nhi hai.';
+        message = 'Try hard to negotiate & get early release ASAP, azadi ab dur nhi hai.';
     } else if (noticeDays > 61 && noticeDays <= 90) {
-        message = 'Kuch nhi ho sakta tera offer to dur ki baat hai, tujhe to calls bhi hardly aayenge.';
+        message = 'Kuch nhi ho sakta tera, offer to dur ki baat hai, tujhe to calls bhi hardly aayenge.';
     }
 
     document.getElementById('additionalMessage').textContent = message;
@@ -93,7 +93,7 @@ function calculateIncrement() {
     if (percentageIncrease < 10) {
         message = 'Switch kar de job kuch nhi rakha yaha!';
     } else if (percentageIncrease >= 10 && percentageIncrease <= 40) {
-        message = 'Interview preparations chalu kar de bahar isse acha mil jayega tujhe!';
+        message = 'Interview preparations chalu kar de, bahar isse acha mil jayega tujhe!';
     } else {
         message = 'Kya kijiyega itni dhanrashi ka, thodi chite gareebono pe bhi udao!';
     }
