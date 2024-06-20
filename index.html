@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Hub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        
+        <h1 class="text-center mb-4">Calculator Hub</h1>
+        <div class="nav-buttons text-center mb-4">
+            <button type="button" class="btn btn-primary mr-2" onclick="showCalculator('noticePeriod')">Notice Period Calculator</button>
+            <button type="button" class="btn btn-primary" onclick="showCalculator('increment')">Increment Calculator</button>
+        </div>
+        <div id="noticePeriod" class="calculator">
+            <h2 class="text-center mb-4">Notice Period Calculator</h2>
+            <form id="noticePeriodForm">
+                <div class="form-group">
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="noticeDays">Notice Period (days):</label>
+                    <input type="number" id="noticeDays" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-success btn-block" onclick="calculateEndDate()">Calculate</button>
+            </form>
+            <div class="result mt-4" id="noticeResult"></div>
+            <div class="additional-message alert alert-danger mt-3" role="alert" id="additionalMessage" style="display: none;"></div>
+        </div>
+        
+        <div id="increment" class="calculator" style="display:none;">
+            <h2 class="text-center mb-4">Increment Calculator</h2>
+            <form id="incrementForm">
+                <div class="form-group">
+                    <label for="currentSalary">Current Salary:</label>
+                    <input type="number" id="currentSalary" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="incrementType">Increment Type:</label>
+                    <select id="incrementType" class="form-control" onchange="toggleIncrementInput()">
+                        <option value="percentage">Percentage</option>
+                        <option value="newSalary">New Salary</option>
+                    </select>
+                </div>
+                <div class="form-group" id="percentageGroup">
+                    <label for="percentageIncrease">Percentage Increase (%):</label>
+                    <input type="number" id="percentageIncrease" class="form-control" step="0.01">
+                </div>
+                <div class="form-group" id="newSalaryGroup" style="display: none;">
+                    <label for="newSalary">New Salary:</label>
+                    <input type="number" id="newSalary" class="form-control" step="0.01">
+                </div>
+                <button type="button" class="btn btn-success btn-block" onclick="calculateIncrement()">Calculate</button>
+            </form>
+            <div class="result mt-4" id="incrementResult"></div>
+            <div class="additional-message alert alert-warning mt-3" role="alert" id="additionalMessage2" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
